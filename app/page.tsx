@@ -1,69 +1,56 @@
 import Image from "next/image";
+import Link from "next/link";
+import { SearchField } from "@/components/forms/SearchField";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteNavbar } from "@/components/layout/SiteNavbar";
+import { MarketingMotion } from "@/features/marketing/components/MarketingMotion";
+
+const locations = [
+  { name: "Banana Island House", place: "Ikoyi, Lagos", price: "₦1.8bn", tone: "location-one" },
+  { name: "Coastal Courtyard", place: "Lekki, Lagos", price: "₦780m", tone: "location-two" },
+  { name: "Parkview Penthouse", place: "Ikoyi, Lagos", price: "₦950m", tone: "location-three" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="marketing-page">
+      <MarketingMotion />
+      <section className="m-hero" id="discover">
+        <Image className="m-hero-image" src="/images/habitat-hero-clean.webp" alt="Contemporary Lagos residence at blue hour" fill priority sizes="100vw" />
+        <div className="m-hero-shade" />
+        <SiteNavbar />
+        <div className="m-tour-badge"><span className="m-cube" aria-hidden="true">◇</span><span><strong>Interactive 3D tour</strong><small>Ready to explore</small></span></div>
+        <div className="m-hero-copy">
+          <p>Property, made understandable</p>
+          <h1>See the whole home<br />before you step inside.</h1>
+          <span>Explore rooms, floors, and details in one interactive property model.</span>
+          <SearchField />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <a className="m-scroll" href="#process">Scroll to discover <span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section className="m-proof" id="process">
+        <div className="m-proof-intro"><span>Why HomeView</span><h2>A clearer way to understand property.</h2><p>We combine architectural storytelling with interactive 3D so buyers can inspect a home with confidence, from anywhere.</p></div>
+        <div className="m-proof-main"><h2>Every room, floor, and detail<br />connected to one <em>living model.</em></h2><dl><div><dt>01</dt><dd><strong>Built from property data</strong><span>No hardcoded rooms or camera views.</span></dd></div><div><dt>02</dt><dd><strong>Available in the browser</strong><span>No app or headset required.</span></dd></div><div><dt>03</dt><dd><strong>Ready for real listings</strong><span>One engine for every property.</span></dd></div></dl></div>
+      </section>
+
+      <section className="m-feature" id="properties">
+        <div className="m-section-heading"><div><span>Featured experience</span><h2>Start with the house.<br />Then go deeper.</h2></div><p>The public listing and the interactive model belong together. Context first, spatial understanding next.</p></div>
+        <div className="m-feature-grid">
+          <div className="m-feature-image"><Image src="/images/courtyard-house.webp" alt="Courtyard House in Lekki" fill sizes="(max-width: 800px) 100vw, 67vw" /><span>Featured property</span></div>
+          <article className="m-feature-card"><span>Courtyard House · Lekki</span><h3>286 m² arranged around light and landscape.</h3><p>A four-bedroom residence with two levels, shaded terraces, and an interactive model ready to inspect.</p><dl><div><dt>Bedrooms</dt><dd>4</dd></div><div><dt>Levels</dt><dd>2</dd></div><div><dt>Interior</dt><dd>286 m²</dd></div></dl><Link className="m-primary-action" href="/explore/demo-house">Explore in 3D <span aria-hidden="true">↗</span></Link></article>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="m-locations">
+        <div className="m-section-heading"><div><span>Selected addresses</span><h2>Homes worth<br />looking through.</h2></div><Link href="/explore/demo-house" className="m-text-action">View interactive demo <span>→</span></Link></div>
+        <div className="m-location-list">
+          {locations.map((location, index) => <article className={`m-location ${location.tone}`} key={location.name}><span className="m-location-index">0{index + 1}</span><div className="m-location-visual" aria-hidden="true"><i /><b /></div><div><h3>{location.name}</h3><p>{location.place}</p><strong>From {location.price}</strong></div><span className="m-location-arrow" aria-hidden="true">↗</span></article>)}
+        </div>
+      </section>
+
+      <section className="m-agent" id="agents"><div><span>For property professionals</span><h2>Turn a listing into a place buyers can explore.</h2></div><p>Upload a model, configure the rooms and views, then publish one link that works on every modern device.</p><Link className="m-agent-action" href="/explore/demo-house">See the experience <span>→</span></Link></section>
+      <SiteFooter />
+    </main>
   );
 }

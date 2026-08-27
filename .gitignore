@@ -40,8 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/docs
 /design
 /graphify-out
+/.playwright-cli
 CLAUDE.md
 AGENTS.md
+/docs
