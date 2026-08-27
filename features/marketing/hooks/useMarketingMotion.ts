@@ -21,6 +21,8 @@ export function useMarketingMotion() {
       gsap.from(".m-feature-image", { opacity: 0, scale: reduced ? 1 : 0.97, duration: 0.75, ease: "power4.out", scrollTrigger: { trigger: ".m-feature-grid", start: "top 82%", once: true } });
       gsap.from(".m-feature-card", { opacity: 0, x: reduced ? 0 : 36, duration: 0.65, ease: "power4.out", scrollTrigger: { trigger: ".m-feature-grid", start: "top 78%", once: true } });
       gsap.from(".m-location", { opacity: 0, y: reduced ? 0 : 20, duration: 0.55, stagger: 0.05, ease: "power4.out", scrollTrigger: { trigger: ".m-location-list", start: "top 84%", once: true } });
+      gsap.from(".m-room-story-copy, .m-room-index", { opacity: 0, y: reduced ? 0 : 28, duration: 0.65, stagger: 0.08, ease: "power4.out", scrollTrigger: { trigger: ".m-room-story", start: "top 78%", once: true } });
+      gsap.from(".m-confidence-grid article", { opacity: 0, y: reduced ? 0 : 24, duration: 0.55, stagger: 0.07, ease: "power4.out", scrollTrigger: { trigger: ".m-confidence", start: "top 82%", once: true } });
     });
     return () => context.revert();
   }, []);
