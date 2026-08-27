@@ -37,7 +37,7 @@ export default function Home() {
       <section className="m-feature" id="properties">
         <div className="m-section-heading"><div><span>Featured experience</span><h2>Start with the house.<br />Then go deeper.</h2></div><p>The public listing and the interactive model belong together. Context first, spatial understanding next.</p></div>
         <div className="m-feature-grid">
-          <div className="m-feature-image"><Image src="/images/courtyard-house.webp" alt="Courtyard House in Lekki" fill sizes="(max-width: 800px) 100vw, 67vw" /><span>Featured property</span></div>
+          <div className="m-feature-image"><Image loading="eager" src="/images/courtyard-house.webp" alt="Courtyard House in Lekki" fill sizes="(max-width: 800px) 100vw, 67vw" /><span>Featured property</span></div>
           <article className="m-feature-card"><span>Courtyard House · Lekki</span><h3>286 m² arranged around light and landscape.</h3><p>A four-bedroom residence with two levels, shaded terraces, and an interactive model ready to inspect.</p><dl><div><dt>Bedrooms</dt><dd>4</dd></div><div><dt>Levels</dt><dd>2</dd></div><div><dt>Interior</dt><dd>286 m²</dd></div></dl><Link className="m-primary-action" href="/explore/demo-house">Explore in 3D <span aria-hidden="true">↗</span></Link></article>
         </div>
       </section>

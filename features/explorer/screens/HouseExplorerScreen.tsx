@@ -26,9 +26,9 @@ export function HouseExplorerScreen({ property }: { property: Property }) {
         <Link href="/" className="close-viewer" aria-label="Close explorer">Close <span aria-hidden="true">×</span></Link>
       </header>
       <section className="viewer-stage" aria-label={`3D view of ${property.name}`}>
-        <SceneErrorBoundary><ExplorerScene modelUrl={property.modelUrl} initialCamera={initialCamera} activeCamera={activeCamera} /></SceneErrorBoundary>
+        <SceneErrorBoundary><ExplorerScene modelUrl={property.modelUrl} initialCamera={initialCamera} activeCamera={activeCamera} cutaway={Boolean(selectedRoom)} /></SceneErrorBoundary>
         <ExplorerLoading />
-        <aside className="property-panel">
+        <aside className={`property-panel${selectedRoom ? " property-panel-room" : ""}`}>
           <span className="panel-index">Residence 01</span>
           <p className="location">{property.location}</p><h1>{property.name}</h1><p>{property.description}</p>
           <dl><div><dt>Interior</dt><dd>{property.area} m²</dd></div><div><dt>Bedrooms</dt><dd>{property.bedrooms}</dd></div><div><dt>Levels</dt><dd>{property.floors.length}</dd></div></dl>
