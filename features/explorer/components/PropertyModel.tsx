@@ -1,9 +1,10 @@
 import { useGLTF } from "@react-three/drei";
+import type { ThreeEvent } from "@react-three/fiber";
 import { useEffect } from "react";
 import type { Group, Mesh } from "three";
-import type { Floor } from "../types/property";
+import type { Floor, Vector3Tuple } from "../types/property";
 
-type PropertyModelProps = { url: string; cutaway: boolean; floors?: Floor[]; visibleFloorId?: string | null };
+type PropertyModelProps = { url: string; cutaway: boolean; floors?: Floor[]; visibleFloorId?: string | null; onPointSelect?: (position: Vector3Tuple) => void };
 
 const isShell = (name: string) => name.startsWith("Exterior") || name.startsWith("Roof");
 
@@ -12,7 +13,7 @@ function floorIdForMesh(name: string, floors: Floor[]) {
   return floors.find((floor) => floor.meshNames.some((prefix) => name.startsWith(prefix)))?.id ?? null;
 }
 
-export function PropertyModel({ url, cutaway, floors = [], visibleFloorId = null }: PropertyModelProps) {
+export function PropertyModel({ url, cutaway, floors = [], visibleFloorId = null, onPointSelect }: PropertyModelProps) {
   const { scene } = useGLTF(url);
 
   useEffect(() => {
@@ -32,5 +33,5 @@ export function PropertyModel({ url, cutaway, floors = [], visibleFloorId = null
     });
   }, [cutaway, floors, scene, visibleFloorId]);
 
-  return <primitive object={scene as Group} />;
+  return <primitive object={scene as Group} onClick={onPointSelect ? (event: ThreeEvent<MouseEvent>) => { event.stopPropagation(); onPointSelect([event.point.x, event.point.y, event.point.z]); } : undefined} />;
 }
