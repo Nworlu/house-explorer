@@ -5,15 +5,17 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteNavbar } from "@/components/layout/SiteNavbar";
 import { MarketingMotion } from "@/features/marketing/components/MarketingMotion";
 
-const locations = [
-  { name: "Banana Island House", place: "Ikoyi, Lagos", price: "₦1.8bn", position: "50% 48%" },
-  { name: "Coastal Courtyard", place: "Lekki, Lagos", price: "₦780m", position: "76% 54%" },
-  { name: "Parkview Residence", place: "Ikoyi, Lagos", price: "₦950m", position: "24% 50%" },
+const properties = [
+  { name: "Coastal Curve Villa", place: "Ada Foah, Ghana", price: "From $1.4m", image: "/test-captures/coastal-curve-villa/01-exterior-front.png" },
+  { name: "Courtyard House", place: "Lekki, Lagos", price: "From ₦780m", image: "/images/courtyard-house.webp" },
+  { name: "Ocean Garden House", place: "Kokrobite, Ghana", price: "From $980k", image: "/test-captures/coastal-curve-villa/02-exterior-rear.png" },
 ];
 
-const rooms = [
-  ["01", "Living room", "Courtyard-facing · Ground floor"], ["02", "Kitchen & dining", "Open plan · Ground floor"],
-  ["03", "Primary suite", "Private terrace · First floor"], ["04", "Guest bedroom", "Garden view · Ground floor"],
+const listings = [
+  { name: "Palm Residence", detail: "4 beds · 4 baths · 320 m²", image: "/test-captures/coastal-curve-villa/03-living-room.png" },
+  { name: "Ridge House", detail: "3 beds · 3 baths · 248 m²", image: "/test-captures/courtyard-house/01-exterior-front.png" },
+  { name: "Lagoon Apartment", detail: "3 beds · 2 baths · 186 m²", image: "/test-captures/coastal-curve-villa/04-kitchen-dining.png" },
+  { name: "Garden Pavilion", detail: "4 beds · 5 baths · 402 m²", image: "/test-captures/courtyard-house/02-courtyard.png" },
 ];
 
 export default function Home() {
@@ -27,41 +29,28 @@ export default function Home() {
         <div className="m-tour-badge"><span className="m-cube" aria-hidden="true">◇</span><span><strong>Interactive 3D tour</strong><small>Ready to explore</small></span></div>
         <div className="m-hero-copy">
           <p>Property, made understandable</p>
-          <h1>See the whole home<br />before you step inside.</h1>
+          <h1><span>See the whole home</span><span>before you step inside.</span></h1>
           <span>Explore rooms, floors, and details in one interactive property model.</span>
           <SearchField />
         </div>
         <a className="m-scroll" href="#process">Scroll to discover <span aria-hidden="true">↓</span></a>
       </section>
 
-      <section className="m-proof" id="process">
-        <div className="m-proof-intro"><span>Why HomeView</span><h2>A clearer way to understand property.</h2><p>We combine architectural storytelling with interactive 3D so buyers can inspect a home with confidence, from anywhere.</p></div>
-        <div className="m-proof-main"><h2>Every room, floor, and detail<br />connected to one <em>living model.</em></h2><dl><div><dt>01</dt><dd><strong>Built from property data</strong><span>No hardcoded rooms or camera views.</span></dd></div><div><dt>02</dt><dd><strong>Available in the browser</strong><span>No app or headset required.</span></dd></div><div><dt>03</dt><dd><strong>Ready for real listings</strong><span>One engine for every property.</span></dd></div></dl></div>
-      </section>
+      <section className="hv-impact" id="process"><div className="hv-impact-copy"><p>Built for better decisions</p><h2>A property listing should explain the space, not just show photographs.</h2><span>HomeView connects listing information, room photography, floor relationships and an interactive model in one browser experience.</span></div><div className="hv-impact-visual"><Image src="/test-captures/coastal-curve-villa/08-hallway-entry.png" alt="Hallway connecting rooms inside Coastal Curve Villa" fill sizes="(max-width: 800px) 100vw, 45vw" /></div><dl><div><dt>360°</dt><dd>Exterior inspection</dd></div><div><dt>Room by room</dt><dd>Guided interior views</dd></div><div><dt>No install</dt><dd>Works in the browser</dd></div></dl></section>
 
-      <section className="m-feature" id="properties">
-        <div className="m-section-heading"><div><span>Featured experience</span><h2>Start with the house.<br />Then go deeper.</h2></div><p>The public listing and the interactive model belong together. Context first, spatial understanding next.</p></div>
-        <div className="m-feature-grid">
-          <div className="m-feature-image"><Image loading="eager" src="/images/courtyard-house.webp" alt="Courtyard House in Lekki" fill sizes="(max-width: 800px) 100vw, 67vw" /><span>Featured property</span></div>
-          <article className="m-feature-card"><span>Courtyard House · Lekki</span><h3>286 m² arranged around light and landscape.</h3><p>A four-bedroom residence with two levels, shaded terraces, and an interactive model ready to inspect.</p><dl><div><dt>Bedrooms</dt><dd>4</dd></div><div><dt>Levels</dt><dd>2</dd></div><div><dt>Interior</dt><dd>286 m²</dd></div></dl><Link className="m-primary-action" href="/explore/demo-house">Explore in 3D <span aria-hidden="true">↗</span></Link></article>
-        </div>
-      </section>
+      <section className="hv-properties" id="properties"><header className="hv-section-head"><div><p>Selected homes</p><h2>Properties designed to be understood.</h2></div><span>Each listing pairs photography and property facts with a spatial experience buyers can explore.</span></header><div className="hv-property-grid">{properties.map((property, index) => <article className={index === 0 ? "is-large" : ""} key={property.name}><div><Image src={property.image} alt={property.name} fill sizes={index === 0 ? "(max-width: 800px) 100vw, 55vw" : "(max-width: 800px) 100vw, 28vw"} /></div><span><small>{property.place}</small><h3>{property.name}</h3><b>{property.price}</b><Link href="/explore/demo-house" aria-label={`Explore ${property.name}`}>↗</Link></span></article>)}</div></section>
 
-      <section className="m-room-story" aria-labelledby="room-story-title">
-        <div className="m-room-story-copy"><span>Inside the model</span><h2 id="room-story-title">Move through the home, room by room.</h2><p>The 3D tour is more than a spinning model. Select a room to open the architecture, move the camera inside, and understand how each space connects to the courtyard.</p><Link className="m-primary-action" href="/explore/demo-house">Enter the courtyard house <span aria-hidden="true">↗</span></Link></div>
-        <div className="m-room-index"><div className="m-plan-mark" aria-hidden="true"><i /><i /><i /><b>Open<br />courtyard</b></div><div className="m-room-list">{rooms.map(([number, name, detail]) => <Link href="/explore/demo-house" key={name}><span>{number}</span><strong>{name}</strong><small>{detail}</small><b aria-hidden="true">→</b></Link>)}</div></div>
-      </section>
+      <section className="hv-services"><header className="hv-section-head"><div><p>How HomeView works</p><h2>From property photos to an interactive home.</h2></div></header><div className="hv-service-list"><article><strong>Capture the property</strong><p>Upload overlapping exterior and interior views. HomeView identifies missing rooms and connections before processing begins.</p><Link href="/studio/new">Start a capture →</Link></article><article><strong>Review the reconstruction</strong><p>Correct room names, floor assignments and camera viewpoints before the experience is published.</p><Link href="/studio">Open the studio →</Link></article><article><strong>Share one clear listing</strong><p>Buyers move from property facts to the exterior and inside each room without installing an application.</p><Link href="/explore/demo-house">Open the demo →</Link></article></div></section>
 
-      <section className="m-locations">
-        <div className="m-section-heading"><div><span>Selected addresses</span><h2>Homes worth<br />looking through.</h2></div><Link href="/explore/demo-house" className="m-text-action">View interactive demo <span>→</span></Link></div>
-        <div className="m-location-list">
-          {locations.map((location, index) => <article className="m-location" key={location.name}><span className="m-location-index">0{index + 1}</span><div className="m-location-visual"><Image src="/images/courtyard-house.webp" alt="" fill sizes="(max-width: 640px) 100vw, 280px" style={{objectPosition: location.position}} /></div><div><h3>{location.name}</h3><p>{location.place}</p><strong>From {location.price}</strong></div><Link href="/explore/demo-house" className="m-location-arrow" aria-label={`Explore ${location.name}`}>↗</Link></article>)}
-        </div>
-      </section>
+      <section className="hv-listings"><header className="hv-section-head"><div><p>Property listings</p><h2>More homes to explore.</h2></div><Link href="/explore/demo-house">View all properties →</Link></header><div>{listings.map((listing) => <article key={listing.name}><div><Image src={listing.image} alt={listing.name} fill sizes="(max-width: 700px) 100vw, 25vw" /></div><h3>{listing.name}</h3><p>{listing.detail}</p><Link href="/explore/demo-house">Explore property ↗</Link></article>)}</div></section>
 
-      <section className="m-confidence"><div className="m-confidence-heading"><span>Designed for certainty</span><h2>Understand more before arranging a viewing.</h2></div><div className="m-confidence-grid"><article><strong>360°</strong><h3>Spatial context</h3><p>Orbit the complete exterior, inspect the courtyard, then step naturally into each room.</p></article><article><strong>8</strong><h3>Guided viewpoints</h3><p>Jump directly to living spaces, bedrooms, bathrooms and the exterior without getting lost.</p></article><article><strong>1</strong><h3>Connected listing</h3><p>Property facts, architecture and the interactive tour stay together in one clear experience.</p></article></div></section>
+      <section className="hv-highlight"><div className="hv-highlight-media"><Image src="/images/courtyard-house.webp" alt="Courtyard House interactive model" fill sizes="(max-width: 800px) 100vw, 60vw" /></div><article><p>Highlighted experience</p><h2>See the exterior. Then step inside.</h2><span>Begin with the complete architecture, select a room, and let the model open only when the interior becomes relevant.</span><ul><li>Complete exterior view</li><li>Eight guided room positions</li><li>Responsive orbit and zoom</li></ul><Link href="/explore/demo-house">Explore Courtyard House in 3D ↗</Link></article></section>
 
-      <section className="m-agent" id="agents"><div><span>For property professionals</span><h2>Turn a listing into a place buyers can explore.</h2></div><p>Upload a model, configure the rooms and views, then publish one link that works on every modern device.</p><Link className="m-agent-action" href="/explore/demo-house">See the experience <span>→</span></Link></section>
+      <section className="hv-trust"><blockquote>“The room-by-room views made the layout understandable before we arranged an in-person visit.”</blockquote><div><strong>Property buyer</strong><span>Lagos, Nigeria</span></div></section>
+
+      <section className="hv-faq"><header><p>Common questions</p><h2>Before you explore.</h2></header><div><details open><summary>Can I enter every room?</summary><p>Published rooms appear as guided views. Selecting one moves the camera inside and temporarily opens the model for visibility.</p></details><details><summary>Do I need special hardware?</summary><p>No. HomeView runs in a modern browser and supports mouse, trackpad and touch controls.</p></details><details><summary>Can agents create their own property?</summary><p>Yes. The studio guides agents through media capture, coverage review, processing and publishing.</p></details><details><summary>Are generated models dimensionally exact?</summary><p>Accuracy depends on capture quality and supplied floor plans. Preview models should not replace professional survey documents.</p></details></div></section>
+
+      <section className="m-agent" id="agents"><div><span>For property professionals</span><h2>Turn a listing into a place buyers can explore.</h2></div><p>Upload guided photos of every space, check the capture coverage, then generate and review an interactive property model.</p><Link className="m-agent-action" href="/studio">Open the studio <span>→</span></Link></section>
       <SiteFooter />
     </main>
   );

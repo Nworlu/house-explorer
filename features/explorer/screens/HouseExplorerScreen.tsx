@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { Brand } from "@/components/brand/Brand";
 import type { Property } from "../types/property";
 import { useExplorerStore } from "../hooks/useExplorerStore";
 import { ExplorerLoading } from "../components/ExplorerLoading";
@@ -21,7 +22,7 @@ export function HouseExplorerScreen({ property }: { property: Property }) {
   return (
     <main className="viewer-shell">
       <header className="viewer-header">
-        <Link href="/" className="brand viewer-brand"><span className="brand-mark">HV</span><span><strong>HomeView</strong><small>Property explorer</small></span></Link>
+        <Link href="/" className="viewer-brand"><Brand /></Link>
         <div className="viewer-title"><span>Now viewing</span><strong>{property.name}</strong></div>
         <Link href="/" className="close-viewer" aria-label="Close explorer">Close <span aria-hidden="true">×</span></Link>
       </header>

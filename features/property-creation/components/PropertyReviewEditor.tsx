@@ -1,0 +1,8 @@
+import type { ChangeEvent } from "react";
+import type { Property } from "@/features/explorer/types/property";
+
+export function PropertyReviewEditor({ property, onChange }: { property: Property; onChange: (property: Property) => void }) {
+  const updateRoom = (index: number, field: "name" | "floorId", value: string) => onChange({ ...property, rooms: property.rooms.map((room, roomIndex) => roomIndex === index ? { ...room, [field]: value } : room) });
+  const updateCamera = (axis: number, value: number) => onChange({ ...property, cameraPresets: property.cameraPresets.map((preset, index) => index === 0 ? { ...preset, camera: { ...preset.camera, position: preset.camera.position.map((item, itemIndex) => itemIndex === axis ? value : item) as [number, number, number] } } : preset) });
+  return <div className="review-editor"><header><span>Detected structure</span><strong>Edit before publishing</strong></header><div className="review-room-list">{property.rooms.map((room, index) => <div key={room.id}><input aria-label={`Room ${index + 1} name`} value={room.name} onChange={(event: ChangeEvent<HTMLInputElement>) => updateRoom(index, "name", event.target.value)} /><select aria-label={`${room.name} floor`} value={room.floorId} onChange={(event) => updateRoom(index, "floorId", event.target.value)}>{property.floors.map((floor) => <option key={floor.id} value={floor.id}>{floor.name}</option>)}</select></div>)}</div><fieldset><legend>Exterior camera position</legend>{["X", "Y", "Z"].map((label, axis) => <label key={label}><span>{label}</span><input type="number" step="0.1" value={property.cameraPresets[0].camera.position[axis]} onChange={(event) => updateCamera(axis, Number(event.target.value))} /></label>)}</fieldset></div>;
+}
