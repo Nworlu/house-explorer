@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "studio-camera-preview": {
+      "projectId": "1e5df355-9637-40f3-84f5-44da4379fb0b",
+      "draftId": "23da6996-15a5-4d0b-b9ca-947ab909c885",
+      "currentVersion": 2,
+      "title": "HomeView — Live exterior camera preview",
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "features/property-creation/screens/PropertyCreationScreen.tsx",
+        "features/property-creation/components/PropertyReviewEditor.tsx",
+        "components/brand/Brand.tsx",
+        ".superdesign/studio-review-context.css"
+      ],
+      "status": "implemented"
+    }
+  }
+}

@@ -26,4 +26,8 @@ export type PropertyDraft = {
 export type CreationStep = "details" | "capture" | "validate" | "review";
 export type GenerationStatus = "idle" | "uploading" | "validating" | "queued" | "reconstructing" | "optimizing" | "review" | "published" | "failed";
 
+export type ValidationSeverity = "error" | "warning" | "ready";
+export type CaptureValidationIssue = { id: string; severity: ValidationSeverity; category?: CaptureCategory; title: string; detail: string };
+export type CaptureValidationReport = { score: number; totalFiles: number; totalBytes: number; duplicateFiles: number; blockingIssues: number; issues: CaptureValidationIssue[] };
+
 export type SavedCreationSession = { step: CreationStep; draft: PropertyDraft; status: GenerationStatus; propertyId?: string };
