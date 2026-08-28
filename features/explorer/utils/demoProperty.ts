@@ -5,8 +5,8 @@ export const demoHouse: Property = {
   description: "A fictional four-bedroom courtyard residence with a complete exterior and room-by-room cutaway views.",
   modelUrl: "/models/courtyard-house-demo-v3.glb", area: 286, bedrooms: 4,
   floors: [
-    { id: "ground-floor", name: "Ground floor", order: 0, meshNames: ["GroundFloor", "LivingSofaBase", "KitchenIsland", "GuestBedroomBase", "GroundBathroomVanity"] },
-    { id: "upper-floor", name: "Upper floor", order: 1, meshNames: ["UpperFloorLeft", "UpperFloorRight", "PrimaryBedroomBase", "BedroomTwoBase", "BedroomThreeBase", "UpperBathroomVanity"] },
+    { id: "ground-floor", name: "Ground floor", order: 0, meshNames: ["GroundFloor", "BackWallGround", "Living", "Kitchen", "Dining", "GuestRoom", "GuestBedroom", "GroundBath", "Stair", "Courtyard"] },
+    { id: "upper-floor", name: "Upper floor", order: 1, meshNames: ["UpperFloor", "BackWallUpper", "UpperLeftPartition", "UpperRightPartition", "UpperRearPartition", "UpperCourtyardRailing", "Primary", "BedroomTwo", "BedroomThree", "UpperBath"] },
   ],
   rooms: [
     { id: "living-room", name: "Living room", floorId: "ground-floor", area: 42, camera: { position: [-3.8, 1.8, 7.1], target: [-3.8, 1.15, 0.6] } },
